@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
@@ -30,26 +32,41 @@ public class Datadriven {
 	
 //	way==2   //need to modify some
 			
+
+	
+//	public static void main(String[] args) throws IOException {
+//		
+//		Datadriven dd = new Datadriven();
+//	dd.takeMyDataAndUse("sheet1");
+//	
+//	}
+	
 	@DataProvider(name = "data from ramchi2")
-	public Object[][] takeMyDataAndUse(String username, String password) throws IOException {
+	public Object[][] takeMyDataAndUse(Method m) throws IOException {
+		
+		String dimp = m.getName();
 		
 		File file = new File("C:\\Users\\kahme\\OneDrive\\Desktop\\emptyexcel.xlsx");
 		FileInputStream fis = new FileInputStream(file);
 		XSSFWorkbook xbook = new XSSFWorkbook(fis);
-		XSSFSheet xsheet = xbook.getSheet("sheet1");
-		int totalrow = xsheet.getLastRowNum() + 1;
-		int totalcolumn = xsheet.getRow(0).getLastCellNum();
+		XSSFSheet xsheet = xbook.getSheet(dimp);
+		int totalrow = xsheet.getLastRowNum() + 1;  //2
+		int totalcolumn = xsheet.getRow(0).getLastCellNum();  //2
 		
+		DataFormatter dftr = new DataFormatter();
 		
 		Object[][] ramchi = new Object[totalrow][totalcolumn];
-		for (int currentrow = 0; currentrow < totalrow; currentrow++) {
-			for (int currentcolumn = 0; currentcolumn < totalcolumn; currentcolumn++) {
+		for (int currentrow = 1; currentrow < totalrow; currentrow++) {
+			for (int currentcolumn = 1; currentcolumn < totalcolumn; currentcolumn++) {
 
-				System.out.print(xsheet.getRow(currentrow).getCell(currentcolumn).toString()); // removed ln to print
-																								// sidebyside
-				System.out.print("\t"); // it will tell to give the secondvalue space and removing ln will give values
-										// side by side
+//				System.out.print(xsheet.getRow(currentrow).getCell(currentcolumn).toString()); // removed ln to print
+//																								// sidebyside
+//				System.out.print("\t"); // it will tell to give the secondvalue space and removing ln will give values
+//										// side by side
 
+				
+				ramchi[currentrow][currentcolumn] = dftr.formatCellValue(xsheet.getRow(currentrow).getCell(currentcolumn));
+				System.out.println(ramchi[currentrow][currentcolumn]);
 			}
 			System.out.println();
 		}
@@ -57,7 +74,7 @@ public class Datadriven {
 		
 		return ramchi;
 	}
-
+	
 	
 	
 //	way==3
