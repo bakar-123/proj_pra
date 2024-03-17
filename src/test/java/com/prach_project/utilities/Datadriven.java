@@ -37,7 +37,7 @@ public class Datadriven {
 //	public static void main(String[] args) throws IOException {
 //		
 //		Datadriven dd = new Datadriven();
-//	dd.takeMyDataAndUse("sheet1");
+//	dd.takeMyDataAndUse("verifyWomenProductIsSelecting");
 //	
 //	}
 	
@@ -50,14 +50,18 @@ public class Datadriven {
 		FileInputStream fis = new FileInputStream(file);
 		XSSFWorkbook xbook = new XSSFWorkbook(fis);
 		XSSFSheet xsheet = xbook.getSheet(dimp);
-		int totalrow = xsheet.getLastRowNum() + 1;  //2
+		int totalrow = xsheet.getLastRowNum() + 1  ;  //2
 		int totalcolumn = xsheet.getRow(0).getLastCellNum();  //2
+		
+		
+		System.out.println(totalrow); // 2
+		System.out.println(totalcolumn); // 2
 		
 		DataFormatter dftr = new DataFormatter();
 		
 		Object[][] ramchi = new Object[totalrow][totalcolumn];
 		for (int currentrow = 1; currentrow < totalrow; currentrow++) {
-			for (int currentcolumn = 1; currentcolumn < totalcolumn; currentcolumn++) {
+			for (int currentcolumn = 0; currentcolumn < totalcolumn; currentcolumn++) {
 
 //				System.out.print(xsheet.getRow(currentrow).getCell(currentcolumn).toString()); // removed ln to print
 //																								// sidebyside
