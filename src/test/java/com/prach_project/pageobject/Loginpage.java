@@ -53,5 +53,14 @@ public class Loginpage  {
 		return new Signinpage(driver);
 
 	}
+	
+	
+	public void signINEP(String mail, String pwd) {
+		WebElement signinemail = driver.findElement(By.xpath("//input[@id='email']"));
+		signinemail.sendKeys(mail);
+		WebElement signinpassword = driver.findElement(By.xpath("//input[@id='passwd']"));
+		signinpassword.sendKeys(pwd);
+		
+	}
 
 }
