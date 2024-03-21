@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import com.prach_project.utilities.Readconfig;
 
@@ -24,9 +25,10 @@ public class Baseclass {
 	String brow = rc.getBrowser();
 
 	@BeforeTest // enableonlyfor TCIndexpage02
-	public void setupapp() {
+	@Parameters("Browsername")
+	public void setupapp(String Browsername) {
 
-		String Browsername = "chrome";
+//		String Browsername = "chrome";     // since i have given @prarmeters, i have commented this
 		// =================or
 //		String Browsername = rc.getBrowser(); // we can call like this, but it is not getting
 		// ===============or
@@ -50,7 +52,7 @@ public class Baseclass {
 	@AfterTest // enableonlyfor TCIndexpage02
 	public void teardown() {
 
-		driver.close();
+//		driver.close();
 		driver.quit();
 	}
 	

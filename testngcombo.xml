@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+	<listeners>
+		<listener
+			class-name="com.prach_project.utilities.Extentreportclient"></listener>
+	</listeners>
+	
+	<test name="edgeTest">
+	<!-- <parameter name="Browsername" value="chrome"></parameter>
+	<parameter name="Browsername" value="firefox"></parameter> 
+	this will work only when given seperately orelse it will take only the last one-->
+	<parameter name="Browsername" value="edge"></parameter>
+		<classes>
+			<class name="com.prach_project.testcases.TC_women_001" />
+			<class name="com.prach_project.testcases.TC_Login_001" />
+		</classes>
+	</test> <!-- Test -->
+	
+	<test name="chromeTest">
+	
+	<parameter name="Browsername" value="chrome"></parameter>
+		<classes>
+			<class name="com.prach_project.testcases.TC_women_001" />
+			<class name="com.prach_project.testcases.TC_Login_001" />
+		</classes>
+	</test> <!-- Test -->
+	
+	
+	
+	<test name="firefoxTest">
+	
+	<parameter name="Browsername" value="firefox"></parameter>
+		<classes>
+			<class name="com.prach_project.testcases.TC_women_001" />
+			<class name="com.prach_project.testcases.TC_Login_001" />
+		</classes>
+	</test> <!-- Test -->
+	
+	
+</suite> <!-- Suite -->	

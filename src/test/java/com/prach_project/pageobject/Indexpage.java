@@ -70,6 +70,12 @@ public class Indexpage {
 		WebElement cartitems = driver.findElement(By.xpath("//a[@title='View my shopping cart']"));
 		cartitems.click();
 	}
+	public void signOutBtn() {
+		WebElement signoutbtn = driver.findElement(By.linkText("Sign out"));
+		signoutbtn.click();
+	}
+	
+	
 	
 
 }

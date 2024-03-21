@@ -12,10 +12,9 @@ import com.prach_project.pageobject.Womenpage;
 import com.prach_project.utilities.Datadriven;
 
 public class TC_women_001 extends Baseclass {
-	@Test(dataProviderClass=Datadriven.class, dataProvider="data from ramchi2")
-	public void verifyWomenProductIsSelecting(String usernameisthis , String Passwordisthis) {
-		
-		
+	@Test(dataProviderClass = Datadriven.class, dataProvider = "ramchi2")
+	public void verifyWomenProductIsSelecting(String usernameisthis, String Passwordisthis) throws InterruptedException {
+
 		Indexpage ip = new Indexpage(driver);
 		ip.clickSignIn();
 		Loginpage lp = new Loginpage(driver);
@@ -25,6 +24,7 @@ public class TC_women_001 extends Baseclass {
 		lp.signInEmail(usernameisthis);
 		lp.signInPassword(Passwordisthis);
 		lp.signInSubmit();
+		Thread.sleep(5000);
 		Signinpage sp = new Signinpage(driver);
 		sp.signInPageVerifyLaunch();
 		Womenpage wp = new Womenpage(driver);
@@ -39,10 +39,9 @@ public class TC_women_001 extends Baseclass {
 		pd.addToCart();
 		Addtocart atc = new Addtocart(driver);
 //		atc.addToCartPopUp();
-		atc.proccedToCheckOut();    // this is working fine
-		
-		
+		atc.proccedToCheckOut(); // this is working fine
+		ip.signOutBtn();
+
 	}
-	
 
 }

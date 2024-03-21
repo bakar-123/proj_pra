@@ -1,5 +1,7 @@
 package com.prach_project.utilities;
 
+import java.nio.file.ClosedFileSystemException;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -23,7 +25,8 @@ public class Extentreportclient extends Baseclass implements ITestListener {
 
 	public void configureReport() {
 
-		htmlreport = new ExtentSparkReporter("Spark " + ut.dateFromHere() + ".html");
+		// earlier  ----> "Spark " + ut.dateFromHere() + ".html"
+		htmlreport = new ExtentSparkReporter(System.getProperty("user.dir")+"//reports//Spark " + ut.dateFromHere() + ".html");
 		ereport = new ExtentReports();
 		ereport.attachReporter(htmlreport);
 
@@ -56,15 +59,16 @@ public class Extentreportclient extends Baseclass implements ITestListener {
 		String testname = result.getName();
 
 		System.out.println("onTestStart method executed : ..........." + testname);
-		test = ereport.createTest(testname);
-		test.log(Status.INFO, "test started successfully " + testname);
+		//=====it is duplicating the report methods, so commenting
+//		test = ereport.createTest(testname);
+//		test.log(Status.INFO, "test started successfully " + testname);
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		String testname = result.getName();
 
 		System.out.println("onTestSuccess method executed : ..........." + testname);
-		test = ereport.createTest(testname);
+		test = ereport.createTest(testname).assignCategory("passed methods are here").assignAuthor("ran by Bakar").assignDevice("its windows OS");
 		test.log(Status.PASS, MarkupHelper.createLabel("this test is success " + testname, ExtentColor.GREEN));
 	}
 
@@ -73,7 +77,7 @@ public class Extentreportclient extends Baseclass implements ITestListener {
 
 		System.out.println("onTestFailure method executed : ..........." + testname);
 		System.out.println("onTestFailure method executed check it here : " + result.getThrowable());
-		test = ereport.createTest(testname);
+		test = ereport.createTest(testname).assignCategory("here are failed methods").assignAuthor("ran by Bakar").assignDevice("its windows OS");;
 		test.log(Status.FAIL, MarkupHelper.createLabel("this test is failed " + testname, ExtentColor.RED));
 
 		/*
@@ -99,7 +103,7 @@ public class Extentreportclient extends Baseclass implements ITestListener {
 		String testname = result.getName();
 
 		System.out.println("onTestSkipped method executed : ..........." + testname);
-		test = ereport.createTest(testname);
+		test = ereport.createTest(testname).assignCategory("skipped methods here").assignAuthor("ran by Bakar").assignDevice("its windows OS");;
 		test.log(Status.SKIP, MarkupHelper.createLabel("this test is skipped " + testname, ExtentColor.YELLOW));
 	}
 

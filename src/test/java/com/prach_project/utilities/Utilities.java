@@ -19,6 +19,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.prach_project.testcases.Baseclass;
 
 public class Utilities extends Baseclass {
+	
+	
+
 
 	public void scrollJS(WebElement name) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

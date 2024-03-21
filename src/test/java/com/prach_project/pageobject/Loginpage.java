@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import com.prach_project.utilities.Loginpageelements;
+import com.prach_project.utilities.Utilities;
+
 public class Loginpage  {
 	
 //	public WebDriver driver; not required since baseclass is extended
@@ -15,6 +18,10 @@ public class Loginpage  {
 		this.driver = driver;
 	}
 
+
+	
+	
+	
 	public void loginPageVerifyLaunch() {
 		WebElement authentext = driver.findElement(By.xpath("//div[@id='center_column']/h1"));
 		String actualtext = authentext.getText();
@@ -23,12 +30,30 @@ public class Loginpage  {
 		Assert.assertTrue(actualtext.equals(expectedtext), "you are not in login page");
 	}
 
+	
+	
 	public void enteringNewEmail(String newmail) {
 		WebElement newemail = driver.findElement(By.xpath("//input[@id='email_create']"));
 		newemail.click();
 		newemail.sendKeys(newmail);
 	}
+	
+//	*****these both are same, but below one is taken from interface     *******   *******        *********
+	// ********  ****  ********   ******* this is COOL =============
+	
+	public void enteringNewEmail1(String newmail) {
+		WebElement newemail = driver.findElement(By.xpath(Loginpageelements.newemail1));
+		newemail.click();
+		newemail.sendKeys(newmail);
+	}
+	
+	
 
+	
+	
+	
+	
+	
 	public void creatingAccountBtn() {
 		WebElement createingaccountbtn = driver.findElement(By.xpath("//button[@id='SubmitCreate']"));
 		createingaccountbtn.click();
