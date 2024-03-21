@@ -4,7 +4,8 @@
   <listeners>
     <listener class-name="com.prach_project.utilities.Extentreportclient"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="edgeTest(failed)">
+    <parameter name="Browsername" value="edge"/>
     <classes>
       <class name="com.prach_project.testcases.TC_women_001">
         <methods>
@@ -13,6 +14,51 @@
           <include name="verifyWomenProductIsSelecting"/>
         </methods>
       </class> <!-- com.prach_project.testcases.TC_women_001 -->
+      <class name="com.prach_project.testcases.TC_Login_001">
+        <methods>
+          <include name="teardown"/>
+          <include name="setupapp"/>
+          <include name="loginForFirst4"/>
+        </methods>
+      </class> <!-- com.prach_project.testcases.TC_Login_001 -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- edgeTest(failed) -->
+  <test thread-count="5" name="chromeTest(failed)">
+    <parameter name="Browsername" value="chrome"/>
+    <classes>
+      <class name="com.prach_project.testcases.TC_women_001">
+        <methods>
+          <include name="teardown"/>
+          <include name="setupapp"/>
+          <include name="verifyWomenProductIsSelecting"/>
+        </methods>
+      </class> <!-- com.prach_project.testcases.TC_women_001 -->
+      <class name="com.prach_project.testcases.TC_Login_001">
+        <methods>
+          <include name="teardown"/>
+          <include name="setupapp"/>
+          <include name="loginForFirst4"/>
+        </methods>
+      </class> <!-- com.prach_project.testcases.TC_Login_001 -->
+    </classes>
+  </test> <!-- chromeTest(failed) -->
+  <test thread-count="5" name="firefoxTest(failed)">
+    <parameter name="Browsername" value="firefox"/>
+    <classes>
+      <class name="com.prach_project.testcases.TC_women_001">
+        <methods>
+          <include name="teardown"/>
+          <include name="setupapp"/>
+          <include name="verifyWomenProductIsSelecting"/>
+        </methods>
+      </class> <!-- com.prach_project.testcases.TC_women_001 -->
+      <class name="com.prach_project.testcases.TC_Login_001">
+        <methods>
+          <include name="teardown"/>
+          <include name="setupapp"/>
+          <include name="loginForFirst4"/>
+        </methods>
+      </class> <!-- com.prach_project.testcases.TC_Login_001 -->
+    </classes>
+  </test> <!-- firefoxTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->
