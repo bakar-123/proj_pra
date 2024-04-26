@@ -7,9 +7,11 @@ public class Createdclasson26042024 {
  // " May be the code i have given is not proper with syntax, let me create a method and add in that"
 
 
- publib void method() {
- S = " ok you have created, now please add this to your code ";
+ public void method() {
+ String name = " ok you have created, now please add this to your code ";
  
  }
+ 
+ // your given items from git are not good, i have corrected them. please take this.
 
 }
